@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IoT Control</title>
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="/static/style-history.css">
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="header">
+            <div class="list-item">
+                <span class="description-header">BBPPMPV BOE</span>
+            </div>
+            <div class="illustration">
+                <img src="/static/img/tut.png" style="width:100px; height:100px;" alt="">
+            </div>
+        </div>
+        <div class="main">
+            <div class="list-item">
+                <a href="/monitoring">
+                    <img src="/static/img/sensor.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">Monitoring</span>
+            </div>
+            <div class="list-item">
+                <a href="/client">
+                    <img src="/static/img/control_client.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">Client Control</span>
+            </div>
+            <div class="list-item">
+                <a href="/history">
+                    <img src="/static/img/history.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">History</span>
+            </div>
+            <div class="list-item">
+                <a href="/logout">
+                    <img src="/static/img/logout.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">Logout</span>
+            </div>
+            <div class="side_time">
+                <div class="side_time_box">
+                    <h5 id="side-date" style="font-size: 20px; margin-left: 5px; color: #DFD7BF">00 / 00 / 0000</h5>
+                    <br>
+                    <h5 id="side-time" style="font-size: 22px; margin-left: 15px; color: #DFD7BF">00 : 00 : 00</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div id="menu-button">
+            <input type="checkbox" id="menu-checkbox">
+            <label for="menu-checkbox" id="menu-label">
+                <div id="hamburger"></div>
+            </label>
+        </div>
+        <div class="bodyHeader"><h1>INTERNET OF THINGS DASHBOARD</h1></div>
+
+        <div class="card-container-client">
+            <div class="client-section">
+                <h3><button class="toggle-button" onclick="toggleVisibility('client1Table')">CLIENT 1 ▼</button></h3>
+                <button class="download-button-wrapper" onclick="window.location.href='/download_csv/1'">Unduh .CSV</button>
+                <table id="client1Table" class="sensor-table">
+                    <thead>
+                    <tr>
+                        <th>Waktu</th>
+                        <th>Suhu Ruang (°C)</th>
+                        <th>Kelembapan (%)</th>
+                        <th>Suhu</th>
+                        <th>Kelembapan</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data_client1 %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="client-section">
+                <h3><button class="toggle-button" onclick="toggleVisibility('client2Table')">CLIENT 2 ▼</button></h3>
+                <button class="download-button-wrapper" onclick="window.location.href='/download_csv/2'">Unduh .CSV</button>
+                <table id="client2Table" class="sensor-table">
+                    <thead>
+                    <tr>
+                        <th>Waktu</th>
+                        <th>Suhu Air (°C)</th>
+                        <th>Jarak (cm)</th>
+                        <th>Normal / Hangat</th>
+                        <th>Dekat / Jauh</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data_client2 %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="client-section">
+                <h3><button class="toggle-button" onclick="toggleVisibility('client3Table')">CLIENT 3 ▼</button></h3>
+                <button class="download-button-wrapper" onclick="window.location.href='/download_csv/3'">Unduh .CSV</button>
+                <table id="client3Table" class="sensor-table">
+                    <thead>
+                    <tr>
+                        <th>Waktu</th>
+                        <th>Arus (A)</th>
+                        <th>Tegangan (V)</th>
+                        <th>Daya (W)</th>
+                        <th>Daya/Jam (Wh)</th>
+                        <th>Arus</th>
+                        <th>Tegangan</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data_client3 %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SCRIPT -->
+<script src="static/JS/moment-2.29.4/package/min/moment.min.js"></script>
+<script src="static/JS/chart.js-4.4.0/package/dist/chart.umd.js"></script>
+<script src="static/JS/jquery-3.7.1/package/dist/jquery.min.js"></script>
+<script>
+    function toggleVisibility(tableId) {
+        var table = document.getElementById(tableId);
+        if (table.style.display === "none") {
+            table.style.display = "table";
+        } else {
+            table.style.display = "none";
+        }
+    }
+</script>
+<script src="/static/script.js"></script>
+</body>
+</html>
