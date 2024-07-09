@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IoT Control</title>
+
+    <! -- STYLE CSS -->
+    <link rel="stylesheet" href="/static/style-client.css">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="header">
+            <div class="list-item">
+                <span class="description-header">BBPPMPV BOE</span>
+                </a>
+            </div>
+            <div class="illustration">
+                <img src="/static/img/tut.png" style="width:100px; height:100px;" alt="">
+            </div>
+        </div>
+        <div class="main">
+            <div class="list-item">
+                <a href="/monitoring">
+                    <img src="/static/img/sensor.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">Monitoring</span>
+            </div>
+            <div class="list-item">
+                <a href="/client">
+                    <img src="/static/img/control_client.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">Client Control</span>
+            </div>
+            <div class="list-item">
+                <a href="/history">
+                    <img src="/static/img/history.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">History</span>
+            </div>
+            <div class="list-item">
+                <a href="/logout">
+                    <img src="/static/img/logout.png" style="width:20px; height:20px;" alt="" class="icon">
+                </a>
+                <span class="description">Logout</span>
+            </div>
+            <div class="side_time">
+                <div class="side_time_box">
+                    <h5 id="side-date" style="font-size: 20px; margin-left: 5px; color: #DFD7BF"> 00 / 00 / 0000</h5>
+                    <br>
+                    <h5 id="side-time" style="font-size: 22px; margin-left: 15px; color: #DFD7BF"> 00 : 00 : 00</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div id="menu-button">
+            <input type="checkbox" id="menu-checkbox">
+            <label for="menu-checkbox" id="menu-label">
+                <div id="hamburger"></div>
+            </label>
+        </div>
+        <div class="bodyHeader"><h1>INTERNET OF THINGS DASHBOARD</h1></div>
+
+        <div class="card-container-client">
+            <div class="main-card-client" id="client1Data">
+                <h3>CLIENT 1</h3>
+                <h5 id="IP_1" style="color:white; margin-top:2px; margin-bottom:5px;"></h5>
+                <div class="tempCard-client">
+                    <img src="/static/img/temp.png" style="width:40px; height:40px;margin-left:-28px;" alt=""
+                         class="icon">
+                    <h7 id="S1_A">00.00 °C</h7>
+                </div>
+                <div class="humCard-client">
+                    <img src="/static/img/kelembapan.png" style="width:40px; height:40px;margin-left:-28px;" alt=""
+                         class="icon">
+                    <h7 id="S1_B">00.00 %</h7>
+                </div>
+                <div class="control-card">
+                    <h3>SUHU RUANGAN</h3>
+                    <div class="control-status">
+                        <h8 id="C1_A"><b>IDEAL</b></h8>
+                    </div>
+                    <div class="time-status">
+                        <h8 id="T1_A" style="font-size: 22px">00 : 00 : 00</h8>
+                    </div>
+                </div>
+                <div class="control-card" style="margin-top: 15px">
+                    <h3>KELEMBAPAN</h3>
+                    <div class="control-status">
+                        <h8 id="C1_B"><b>IDEAL</b></h8>
+                    </div>
+                    <div class="time-status">
+                        <h8 id="T1_B" style="font-size: 22px">00 : 00 : 00</h8>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-card-client" id="client2Data">
+                <h3>CLIENT 2</h3>
+                <h5 id="IP_2" style="color:white; margin-top:2px; margin-bottom:5px;"></h5>
+                <div class="tempCard-client">
+                    <img src="/static/img/air.png" style="width:40px; height:40px;margin-left:-35px;" alt=""
+                         class="icon">
+                    <h7 id="S2_A">00.00 °C</h7>
+                </div>
+                <div class="humCard-client">
+                    <img src="/static/img/jarak.png" style="width:40px; height:40px;margin-left:-28px;" alt=""
+                         class="icon">
+                    <h7 id="S2_B">00.00 cm</h7>
+                </div>
+                <div class="control-card">
+                    <h3>SUHU AIR</h3>
+                    <div class="control-status">
+                        <h8 id="C2_A"><b>NORMAL</b></h8>
+                    </div>
+                    <div class="time-status">
+                        <h8 id="T2_A" style="font-size: 22px">00 : 00 : 00</h8>
+                    </div>
+                </div>
+                <div class="control-card" style="margin-top: 15px">
+                    <h3>JARAK OBJEK</h3>
+                    <div class="control-status">
+                        <h8 id="C2_B"><b>DEKAT</b></h8>
+                    </div>
+                    <div class="time-status">
+                        <h8 id="T2_B" style="font-size: 22px">00 : 00 : 00</h8>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-card-client" id="client3Data">
+                <h3>CLIENT 3</h3>
+                <h5 id="IP_3" style="color:white; margin-top:2px; margin-bottom:5px;"></h5>
+                <div class="tempCard-client">
+                    <img src="/static/img/ampere.png" style="width:40px; height:40px;margin-left:-28px;" alt=""
+                         class="icon">
+                    <h7 id="S3_A">00.00 Amp</h7>
+                    <h7 id="S3_C">00.00 Watt</h7>
+                </div>
+                <div class="humCard-client">
+                    <img src="/static/img/voltage.png" style="width:40px; height:40px;margin-left:-28px;" alt=""
+                         class="icon">
+                    <h7 id="S3_B">00.00 Volt</h7>
+                    <h7 id="S3_D">00.00 Wh</h7>
+                </div>
+                <div class="control-card">
+                    <h3>ARUS LISTRIK</h3>
+                    <div class="control-status">
+                        <h8 id="C3_A"><b>TIDAK TERDETEKSI</b></h8>
+                    </div>
+                    <div class="time-status">
+                        <h8 id="T3_A" style="font-size: 22px">00 : 00 : 00</h8>
+                    </div>
+                </div>
+                <div class="control-card" style="margin-top: 15px">
+                    <h3>TEGANGAN LISTRIK</h3>
+                    <div class="control-status">
+                        <h8 id="C3_B"><b>NORMAL</b></h8>
+                    </div>
+                    <div class="time-status">
+                        <h8 id="T3_B" style="font-size: 22px;">00 : 00 : 00</h8>
+                    </div>
+                </div>
+            </div>
+            <div class="main-card-client" id="client4Data">
+                <h3>CONTROL</h3>
+                <div class="control-card">
+                    <h3>CLIENT 1</h3>
+                    <div style="display: flex; flex-direction: column; gap: 3px;">
+                        <div class="card">
+                            <button class="on" data-client="1A" style="margin-right: 8px;">S1.ON</button>
+                            <button class="off" data-client="1B">S1.OFF</button>
+                        </div>
+                        <div class="card">
+                            <button class="on" data-client="1C" style="margin-right: 8px;">S2.ON</button>
+                            <button class="off" data-client="1D">S2.OFF</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-card" style="margin-top: 15px">
+                    <h3>CLIENT 2</h3>
+                    <div style="display: flex; flex-direction: column; gap: 3px;">
+                        <div class="card">
+                            <button class="on" data-client="2A" style="margin-right: 8px;">S1.ON</button>
+                            <button class="off" data-client="2B">S1.OFF</button>
+                        </div>
+                        <div class="card">
+                            <button class="on" data-client="2C" style="margin-right: 8px;">S2.ON</button>
+                            <button class="off" data-client="2D">S2.OFF</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-card" style="margin-top: 15px">
+                    <h3>CLIENT 3</h3>
+                    <div style="display: flex; flex-direction: column; gap: 3px;">
+                        <div class="card">
+                            <button class="on" data-client="3A" style="margin-right: 8px;">S1.ON</button>
+                            <button class="off" data-client="3B">S1.OFF</button>
+                        </div>
+                        <div class="card">
+                            <button class="on" data-client="3C"style="margin-right: 8px;">S2.ON</button>
+                            <button class="off" data-client="3D">S2.OFF</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<! -- SCRIPT -->
+<script src="static/JS/moment-2.29.4/package/min/moment.min.js"></script>
+<script src="static/JS/chart.js-4.4.0/package/dist/chart.umd.js"></script>
+<script src="static/JS/jquery-3.7.1/package/dist/jquery.min.js"></script>
+<script src="/static/script.js"></script>
+
+</body>
+</html>
+
+
